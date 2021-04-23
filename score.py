@@ -10,4 +10,7 @@ class Score:
         self.amount += n
     
     def show(self):
-        return font.render("{socre}".format(socre = self.amount), True, (0,0,0))
+        if(self.amount > 0):
+            return font.render("Socre : {socre}".format(socre = self.amount), True, (0,255,0))
+        else:
+            return font.render("Socre : {socre}".format(socre = self.amount), True, (255,0,0))

@@ -23,7 +23,7 @@ socre = 0
 
 s = Score()
 
-r = random.randint(0,4)
+r = random.randint(0,3)
 test_tile = Tile(r)
 
 running = True
@@ -35,7 +35,7 @@ def check_hit(l):
         s.add(-100)
 
 def show_score():
-    screen.blit(s.show(),(0,0))
+    screen.blit(s.show(),(50,50))
 
 def draw_background():
     for i in range(1, 4):
@@ -44,12 +44,14 @@ def draw_background():
     pygame.draw.line(screen, color["line"],
                      (0, scale["h_line"]), (size["x"], scale["h_line"]), scale["h_line_size"])
 
-while running:
-    for event in pygame.event.get():
+def check_event(e):
+    for event in e:
         if event.type == pygame.QUIT:
-            running = False
+            pygame.quit()
         elif event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_d:
+            if event.key == pygame.K_ESCAPE:
+                pygame.quit()
+            elif event.key == pygame.K_d:
                 check_hit(0)
             elif event.key == pygame.K_f:
                 check_hit(1)
@@ -57,6 +59,10 @@ while running:
                 check_hit(2)
             elif event.key == pygame.K_k:
                 check_hit(3)
+                
+
+while running:
+    check_event(pygame.event.get())
 
     screen.fill((255, 255, 255))
     
@@ -70,5 +76,3 @@ while running:
     pygame.display.update()
 
     clock.tick(60)
-
-pygame.quit()
