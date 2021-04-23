@@ -38,7 +38,7 @@ def show_score():
     screen.blit(s.show(),(50,50))
 
 def draw_background():
-    for i in range(1, 4):
+    for i in range(1, 8):
         pygame.draw.line(screen, color["line"],
                          (i * scale["v_line"], 0), (i * scale["v_line"], size["y"]), scale["v_line_size"])
     pygame.draw.line(screen, color["line"],
@@ -63,10 +63,9 @@ def check_event(e):
 
 while running:
     check_event(pygame.event.get())
-
     screen.fill((255, 255, 255))
-    
     draw_background()
+
     show_score()
     
     test_tile.update(5)
