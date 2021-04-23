@@ -37,6 +37,12 @@ def check_hit(l):
 def show_score():
     screen.blit(s.show(),(0,0))
 
+def draw_background():
+    for i in range(1, 4):
+        pygame.draw.line(screen, color["line"],
+                         (i * scale["v_line"], 0), (i * scale["v_line"], size["y"]), scale["v_line_size"])
+    pygame.draw.line(screen, color["line"],
+                     (0, scale["h_line"]), (size["x"], scale["h_line"]), scale["h_line_size"])
 
 while running:
     for event in pygame.event.get():
@@ -53,25 +59,12 @@ while running:
                 check_hit(3)
 
     screen.fill((255, 255, 255))
-    show_score()
     
-
-    # draw background
-    for i in range(1, 4):
-        pygame.draw.line(screen, color["line"],
-                         (i * scale["v_line"], 0), (i * scale["v_line"], size["y"]), scale["v_line_size"])
-    pygame.draw.line(screen, color["line"],
-                     (0, scale["h_line"]), (size["x"], scale["h_line"]), scale["h_line_size"])
-
+    draw_background()
+    show_score()
     
     test_tile.update(5)
     test_tile.draw(screen)
-    
-    
-    # pygame.draw.rect(screen, color["box"], pygame.Rect(135, 10, 105, 30))
-    # pygame.draw.rect(screen, color["box"], pygame.Rect(260, 10, 105, 30))
-    # pygame.draw.rect(screen, color["box"], pygame.Rect(385, 10, 105, 30))
-    count += 1
 
     pygame.display.flip()
     pygame.display.update()
