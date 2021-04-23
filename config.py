@@ -5,7 +5,7 @@ size = dict(
 
 size_tile = dict(
     x=105,
-    y=30
+    y=50
 )
 
 scale = dict(

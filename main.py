@@ -18,6 +18,8 @@ clock = pygame.time.Clock()
 count = 30
 
 
+
+
 r = random.randint(0,4)
 test_tile = Tile(r)
 
@@ -26,6 +28,15 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_d:
+                test_tile.get_hit(0)
+            elif event.key == pygame.K_f:
+                test_tile.get_hit(1)
+            elif event.key == pygame.K_j:
+                test_tile.get_hit(2)
+            elif event.key == pygame.K_k:
+                test_tile.get_hit(3)
 
     screen.fill((255, 255, 255))
 
