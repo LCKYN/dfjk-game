@@ -8,6 +8,9 @@ color = config.color
 pygame.init()
 
 screen = pygame.display.set_mode([size["x"], size["y"]])
+clock = pygame.time.Clock()
+
+count = 30
 
 running = True
 while running:
@@ -24,7 +27,12 @@ while running:
     pygame.draw.line(screen, color["line"],
                      (0, scale["h_line"]), (size["x"], scale["h_line"]), scale["h_line_size"])
 
-    pygame.draw.rect(screen, (40, 40, 40), pygame.Rect(10, 10, 105, 30))
+    pygame.draw.rect(screen, color["box"], pygame.Rect(10, 10, 105, count))
+    count += 1
 
     pygame.display.flip()
+    pygame.display.update()
+
+    clock.tick(40)
+
 pygame.quit()
