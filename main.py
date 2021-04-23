@@ -1,9 +1,12 @@
 # Import and initialize the pygame library
 import pygame
+import config
+
+
 pygame.init()
 
 # Set up the drawing window
-screen = pygame.display.set_mode([500, 1000])
+screen = pygame.display.set_mode([config.size['x'], config.size['y']])
 
 # Run until the user asks to quit
 running = True
