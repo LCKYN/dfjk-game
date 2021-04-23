@@ -27,7 +27,10 @@ while running:
     pygame.draw.line(screen, color["line"],
                      (0, scale["h_line"]), (size["x"], scale["h_line"]), scale["h_line_size"])
 
-    pygame.draw.rect(screen, color["box"], pygame.Rect(10, 10, 105, count))
+    pygame.draw.rect(screen, color["box"], pygame.Rect(10, 10, 105, 30))
+    pygame.draw.rect(screen, color["box"], pygame.Rect(135, 10, 105, 30))
+    pygame.draw.rect(screen, color["box"], pygame.Rect(260, 10, 105, 30))
+    pygame.draw.rect(screen, color["box"], pygame.Rect(385, 10, 105, 30))
     count += 1
 
     pygame.display.flip()
