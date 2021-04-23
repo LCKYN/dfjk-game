@@ -14,11 +14,15 @@ class Tile:
 
     def update(self, bpm):
         self.y += bpm
+        if(self.y > 1000):
+            self.y = -50
 
     def get_hit(self, lane):
         if(self.lane == lane):
             if((self.y + size_tile["y"]) > scale["h_line"] and self.y < scale["h_line"]):
                 self.y = - size_tile["y"]
+                return True
+        return False
         # if(self.lane == lane):
         #     if(self.y + 15 < scale["h_line"] < self.y - 15):
         #         self.hit = True

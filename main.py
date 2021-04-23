@@ -3,6 +3,7 @@ import random
 
 import config
 from tile import Tile
+from score import Score
 
 
 
@@ -17,28 +18,43 @@ clock = pygame.time.Clock()
 
 count = 30
 
+socre = 0
 
 
+s = Score()
 
 r = random.randint(0,4)
 test_tile = Tile(r)
 
 running = True
+
+def check_hit(l):
+    if(test_tile.get_hit(l)):
+        s.add(100)
+    else:
+        s.add(-100)
+
+def show_score():
+    screen.blit(s.show(),(0,0))
+
+
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_d:
-                test_tile.get_hit(0)
+                check_hit(0)
             elif event.key == pygame.K_f:
-                test_tile.get_hit(1)
+                check_hit(1)
             elif event.key == pygame.K_j:
-                test_tile.get_hit(2)
+                check_hit(2)
             elif event.key == pygame.K_k:
-                test_tile.get_hit(3)
+                check_hit(3)
 
     screen.fill((255, 255, 255))
+    show_score()
+    
 
     # draw background
     for i in range(1, 4):
